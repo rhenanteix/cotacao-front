@@ -1,6 +1,7 @@
     import { useState } from "react";
     import { api } from "../services/api";
     import type { QuoteForm, Traveller } from "../types/Quotes";
+    import { QuoteResult } from "../components/QuoteResult";
     import { useQuoteStore } from "../store/quoteStore";
 
 
@@ -274,13 +275,7 @@ const handleSubmit = async () => {
         </button>
 
         {result && (
-            <pre>
-            {JSON.stringify(
-                result,
-                null,
-                2
-            )}
-            </pre>
+            <QuoteResult result={result} />
         )}
         </div>
         )

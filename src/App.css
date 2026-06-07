@@ -181,4 +181,29 @@
     right: 0;
     border-right-color: var(--border);
   }
+  .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+button {
+  padding: 10px 16px;
+  cursor: pointer;
+}
 }

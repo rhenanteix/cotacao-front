@@ -6,7 +6,8 @@
 
 
     export function QuotePage() {
-        const { result, setResult } = useQuoteStore();
+        const { result, setResult, loading, setLoading } = useQuoteStore();
+        const [ error, setError ] = useState<string>("");
 
 
         const [form, setForm] = useState<QuoteForm>({
@@ -65,6 +66,10 @@
 
 const handleSubmit = async () => {
   try {
+
+    setError("");
+
+    setLoading(true);
     console.log("FORM", form);
 
     const response = await api.post("/quotes", form);
@@ -81,6 +86,9 @@ const handleSubmit = async () => {
 
       alert(JSON.stringify(error.response.data, null, 2));
     }
+  }
+  finally {
+    setLoading(false);
   }
 };
 
@@ -270,8 +278,10 @@ const handleSubmit = async () => {
     )}
 
 
-        <button onClick={handleSubmit}>
-            Calcular
+        <button onClick={handleSubmit} disabled={loading} >
+            {
+          loading ? "Calculando..." : "Calcular Cotação"
+          }
         </button>
 
         {result && (
